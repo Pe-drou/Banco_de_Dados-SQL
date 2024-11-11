@@ -34,7 +34,7 @@ CREATE TABLE editora (
 CREATE TABLE autor (
     id_autor INT PRIMARY KEY AUTO_INCREMENT,
     nome_autor VARCHAR(200) NOT NULL,
-    data_nascimento DATE
+    data_nascimento DATE NOT NULL
 );
 ```
 
@@ -43,14 +43,29 @@ CREATE TABLE autor (
 CREATE TABLE assunto (
     id_assunto INT PRIMARY KEY AUTO_INCREMENT,
     descricao_assunto VARCHAR(300) NOT NULL
-)
+);
 ```
 
 #### 1.5 Criando a tabela 'livro'
 ```
 CREATE TABLE livro(
     id_livro INT PRIMARY KEY AUTO_INCREMENT,
-    nome_livro VARCHAR(150),
-    
+    titulo VARCHAR(150) NOT NULL,
+    ano_publicacao YEAR NOT NULL,
+    FOREIGN KEY (id_autor) REFERENCES editora(id_editora), 
+    FOREIGN KEY (id_descricao) REFERENCES descricao(id_descricao),
+    FOREINGN KEY (id_editora) REFERENCES editora(id_editora)
+);
+```
+
+#### 1.6 Criando uma tabela EXTRA
+A tabela EXTRA vai servir para exemplificar a exclusão
+
+```
+CREATE TABLE extra(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    produtos VARCHAR(50) NOT NULL,
+    quantidade INT(20) NOT NULL,
+    preco DOUBLE NOT NULL
 )
 ```
